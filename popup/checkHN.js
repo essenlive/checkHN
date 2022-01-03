@@ -1,7 +1,8 @@
 async function checkHN () {
   // Get current tab URL
-  let currentUrl = await browser.tabs.query({ currentWindow: true, active: true })
-  currentUrl = new URL(currentUrl[0].url);
+  const currentTab = await browser.tabs.query({ currentWindow: true, active: true })
+  const currentUrl = new URL(currentTab[0].url);
+  const currentTitle = currentTab[0].title;
 
   // Return if on a weird URL, like settings or something else
   if (currentUrl.host === "") {
@@ -10,7 +11,7 @@ async function checkHN () {
     return
   }
 
-  document.getElementById("url").innerHTML = `${currentUrl.host}${currentUrl.pathname}`
+  document.getElementById("url").innerText = `${currentUrl.host}${currentUrl.pathname}`
 
   // Fetch HN stories with the corresponding URL
   let exactMatch = await fetch(`https://hn.algolia.com/api/v1/search?tags=story&query=${currentUrl.href}`)
@@ -24,7 +25,7 @@ async function checkHN () {
   // Display the first five stories
   exactMatch.hits.slice(0,5).forEach(story => {
     const storyElement = document.createElement('div');
-    storyElement.innerHTML = `<a target="_blank" href="https://news.ycombinator.com/item?id=${story.objectID}">${story.title}</a>   ${story.author} 🔺 ${story.points}`;
+    storyElement.innerHTML = `<a href="https://news.ycombinator.com/item?id=${story.objectID}">${story.title}</a>   ${story.author} 🔺 ${story.points}`;
     noExactResult.insertAdjacentElement('beforebegin', storyElement);
   });
 
@@ -32,6 +33,7 @@ async function checkHN () {
     document.getElementById("matches").classList.add('results');
   }
   else{
+    noExactResult.innerHTML = `<span class="emoji">😭</span> No results. <a href="https://news.ycombinator.com/submitlink?u=${currentUrl.href}&t=${currentTitle}">Submit it ?</a> `
     noExactResult.classList.remove('hidden')
   }
 
