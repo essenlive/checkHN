@@ -45,7 +45,6 @@ async function checkHN () {
     hostMatch = await hostMatch.json();
   }
   // If there are other stories on the hostname, or all the stories were not displayed, show a link to algolia.
-  console.log(hostMatch?.nbHits, exactMatch.nbHits);
   if (hostMatch?.nbHits > 0 || exactMatch.nbHits > 5) {
     const moreElement = document.createElement('div');
     moreElement.classList.add('more-elements')
