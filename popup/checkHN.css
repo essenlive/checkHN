@@ -1,0 +1,80 @@
+html, body {
+  width: 400px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.3em;
+  border: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: #ff6600;
+  padding-right: 1.5rem;
+}
+
+a {
+  color: black;
+  font-weight: 600;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+#matches>div {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+}
+
+#matches {
+  counter-reset: list-number;
+}
+
+#matches.results>div {
+  margin-left: 1.5rem;
+  counter-increment: list-number;
+  position: relative;
+}
+
+#matches.results>div::before {
+  content: counter(list-number);
+  position: absolute;
+  right: 100%;
+  margin-right: 0.5rem;
+
+}
+
+
+.emoji {
+  font-size: 1.3em;
+}
+
+body>* {
+  padding: 0.75rem;
+}
+
+#github {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.more-elements {
+  background-color: lightgoldenrodyellow;
+  border-radius: 0.25rem;
+}
+
+.hidden {
+  display: none;
+}
