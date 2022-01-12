@@ -2,12 +2,11 @@
 
 This add-on is designed to check [Hacker News](https://news.ycombinator.com/news), if the current webpage has already been submitted. 
 
-- If it has been, you can directly get a link to the discussion. 
+- It checks if the exact webpage has been posted and, links you to the discussions.
 
-- If not, it checks for the website at a whole. It might not make sense for many cases. (eg: github,medium...)
+- It checks If the website as already been posted and links you to the the diffrent article on the web site.
 
-- If it has indeed not been submitted, it also offers a direct link to submit it to HN. 
-
+- And if there are no results, it gies you a direct link to post it to HN.
 
 ## Warnings
 
