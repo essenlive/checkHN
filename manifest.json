@@ -16,6 +16,6 @@
   "browser_action": {
     "default_icon": "icons/chy96.png",
     "default_title": "Check HN",
-    "default_popup": "popup/checkHN.html"
+    "default_popup": "popup/popup.html"
   }
 }
